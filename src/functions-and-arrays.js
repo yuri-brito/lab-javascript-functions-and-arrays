@@ -233,7 +233,217 @@ function greatestProduct(lista) {
   }
 }
 
+//Bônus 8.1
 
+
+function greatestProduct(matrix) {
+  greatproduct=0
+  
+  y=0
+  for (let row of matrix){
+    x=0
+    for (let cel of matrix[y]){
+      for(let i=0;i<=3;i++){
+        if (i===0){
+          prim=matrix[y][x]
+          if (x-1<0){
+            seg=1
+          }else{
+            seg=matrix[y][x-1]
+          }
+          if(x-2<0){
+            ter=1
+          }else{
+            ter=matrix[y][x-2]
+          }
+          if(x-3<0){
+            qua=1
+          }else{
+            qua=matrix[y][x-3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        } else if(i===1){
+          prim=matrix[y][x]
+          if (y-1<0){
+            seg=1
+          }else{
+            seg=matrix[y-1][x]
+          }
+          if(y-2<0){
+            ter=1
+          }else{
+            ter=matrix[y-2][x]
+          }
+          if(y-3<0){
+            qua=1
+          }else{
+            qua=matrix[y-3][x]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+
+        } else if (i===2){
+          prim=matrix[y][x]
+          if(x+1>matrix[y].length-1){
+            seg=1
+          }else{
+            seg=matrix[y][x+1]
+          }
+          if(x+2>matrix[y].length-1){
+            ter=1
+          }else{
+            ter=matrix[y][x+2]
+          }if(x+3>matrix[y].length-1){
+            qua=1
+          }else{
+            qua=matrix[y][x+3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        } else {
+          prim=matrix[y][x]
+          if (y+1>matrix.length-1){
+            seg=1
+          }else{
+            seg=matrix[y+1][x]
+          }
+          if (y+2>matrix.length-1){
+            ter=1
+          }else{
+            ter=matrix[y+2][x]
+          }
+          if (y+3>matrix.length-1){
+            qua=1
+          }else{
+            qua=matrix[y+3][x]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        }
+      }
+
+      x+=1
+
+    }
+    y+=1
+
+  }return greatproduct
+}
+
+//Bônus 8.2
+
+function greatestProductOfDiagonals(matrix) {
+  greatproduct=0
+  
+  y=0
+  for (let row of matrix){
+    x=0
+    for (let cel of matrix[y]){
+    
+      for(let i=0;i<=3;i++){
+        if (i===0){
+          prim=matrix[y][x]
+          if (x-1<0 || y-1<0){
+            seg=1
+          }else{
+            seg=matrix[y-1][x-1]
+          }
+          if(x-2<0 || y-2<0){
+            ter=1
+          }else{
+            ter=matrix[y-2][x-2]
+          }
+          if(x-3<0 || y-3<0){
+            qua=1
+          }else{
+            qua=matrix[y-3][x-3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        } else if(i===1){
+          prim=matrix[y][x]
+          if (y-1<0 || x+1>matrix[y].length-1){
+            seg=1
+          }else{
+            seg=matrix[y-1][x+1]
+          }
+          if(y-2<0 || x+2>matrix[y].length-1){
+            ter=1
+          }else{
+            ter=matrix[y-2][x+2]
+          }
+          if(y-3<0 || x+3>matrix[y].length-1){
+            qua=1
+          }else{
+            qua=matrix[y-3][x+3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+
+        } else if (i===2){
+          prim=matrix[y][x]
+          if(x+1>matrix[y].length-1 || y-1<0){
+            seg=1
+          }else{
+            seg=matrix[y-1][x+1]
+          }
+          if(x+2>matrix[y].length-1 || y-2<0){
+            ter=1
+          }else{
+            ter=matrix[y-2][x+2]
+          }if(x+3>matrix[y].length-1 || y-3<0){
+            qua=1
+          }else{
+            qua=matrix[y-3][x+3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        } else {
+          prim=matrix[y][x]
+          if (y+1>matrix.length-1 || x+1>matrix[y].length-1){
+            seg=1
+          }else{
+            seg=matrix[y+1][x+1]
+          }
+          if (y+2>matrix.length-1 || x+2>matrix[y].length-1){
+            ter=1
+          }else{
+            ter=matrix[y+2][x+2]
+          }
+          if (y+3>matrix.length-1 || x+3>matrix[y].length-1){
+            qua=1
+          }else{
+            qua=matrix[y+3][x+3]
+          }
+          produto=prim*seg*ter*qua
+          if(produto>greatproduct){
+            greatproduct=produto
+          }
+        }
+      }
+
+      x+=1
+
+    }
+    y+=1
+
+  }return greatproduct
+}
 
 
 // The following is required to make unit tests work.
